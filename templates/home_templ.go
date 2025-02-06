@@ -29,7 +29,7 @@ func Home() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!doctype html><html lang=\"pt\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Home Page</title><script src=\"https://unpkg.com/htmx.org@1.9.6\"></script></head><body><h1>Welcome to Web SSR Go!</h1><button hx-get=\"/load-message\" hx-target=\"#message\" hx-swap=\"innerHTML\">Load Message</button><div id=\"message\"></div></body></html>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<!doctype html><html lang=\"pt\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><title>Home Page</title><link rel=\"stylesheet\" href=\"/static/css/styles.css\"><script src=\"https://unpkg.com/htmx.org@1.9.6\"></script></head><body><h1>Welcome to Web SSR Go!</h1><button hx-get=\"/load-message\" hx-target=\"#message\" hx-swap=\"innerHTML\">Load Message</button><div id=\"message\"></div><form hx-post=\"/submit-form\" hx-target=\"#form-response\" hx-swap=\"innerHTML\"><label for=\"name\">Nome:</label> <input type=\"text\" id=\"name\" name=\"name\" required> <button type=\"submit\">Enviar</button></form><div id=\"form-response\"></div></body></html>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

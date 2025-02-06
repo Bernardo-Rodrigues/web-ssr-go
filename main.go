@@ -22,9 +22,21 @@ func loadMessageHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func submitFormHandler(w http.ResponseWriter, r *http.Request) {
+	if err := r.ParseForm(); err != nil {
+		http.Error(w, "Erro ao processar o formulário", http.StatusInternalServerError)
+		return
+	}
+	name := r.FormValue("name")
+	response := fmt.Sprintf("Obrigado, %s! Seu formulário foi enviado com sucesso.", name)
+	w.Write([]byte(response))
+}
+
 func main() {
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 	http.HandleFunc("/", homeHandler)
 	http.HandleFunc("/load-message", loadMessageHandler)
+	http.HandleFunc("/submit-form", submitFormHandler)
 	fmt.Println("Server running at http://localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
