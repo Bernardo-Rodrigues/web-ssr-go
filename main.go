@@ -1,13 +1,18 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"net/http"
+	"web-ssr/templates"
 )
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("<h1>Olá, Mundo!</h1>"))
+	err := templates.Home().Render(context.Background(), w)
+	if err != nil {
+		http.Error(w, "Erro ao renderizar template", http.StatusInternalServerError)
+	}
 }
 
 func main() {
